@@ -6,6 +6,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -20,6 +22,7 @@ public class viewCustomObject extends View {
     private int innerCirclePositionY =0;
     private int outerCirclePositionX =0;
     private int outerCirclePositionY =0;
+    private GestureDetector joystickGestureDetectorListener;
 
     public int getOuterCircleRadiusRadius() {
         return outerCircleRadius;
@@ -92,6 +95,8 @@ public class viewCustomObject extends View {
 
     public viewCustomObject(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
+
         TypedArray array = context.getTheme().obtainStyledAttributes(attrs,R.styleable.viewCustomObject,0,0);
         try{
             outerCircleRadius= array.getInteger(R.styleable.viewCustomObject_outerCircleRadius,200);
@@ -105,8 +110,10 @@ public class viewCustomObject extends View {
         }
     }
 
-
-
+    /*@Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return super.onTouchEvent(event);
+    }*/
 
 
     private void init(){
@@ -130,5 +137,7 @@ public class viewCustomObject extends View {
         //innerCircle
         canvas.drawCircle(innerCirclePositionX,innerCirclePositionY,innerCircleRadius,innerCircleColor);
     }
+
+
 }
 
