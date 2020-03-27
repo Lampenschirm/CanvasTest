@@ -12,17 +12,19 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class viewCustomObject extends View {
+public class viewCustomObject extends View implements View.OnTouchListener {
 
     Paint outerCircleColor;
     Paint innerCircleColor;
-    private int outerCircleRadius = 0;
-    private int innerCircleRadius = 0;
-    private int innerCirclePositionX =0;
-    private int innerCirclePositionY =0;
-    private int outerCirclePositionX =0;
-    private int outerCirclePositionY =0;
-    private GestureDetector joystickGestureDetectorListener;
+    private int outerCircleRadius;
+    private int innerCircleRadius ;
+    private int innerCirclePositionX;
+    private int innerCirclePositionY;
+    private int outerCirclePositionX;
+    private int outerCirclePositionY;
+
+    protected GestureDetector gesture;
+
 
     public int getOuterCircleRadiusRadius() {
         return outerCircleRadius;
@@ -97,6 +99,7 @@ public class viewCustomObject extends View {
         super(context, attrs);
 
 
+
         TypedArray array = context.getTheme().obtainStyledAttributes(attrs,R.styleable.viewCustomObject,0,0);
         try{
             outerCircleRadius= array.getInteger(R.styleable.viewCustomObject_outerCircleRadius,200);
@@ -108,6 +111,8 @@ public class viewCustomObject extends View {
         }finally {
             array.recycle();
         }
+
+        gesture = new GestureDetector(context, new JoystickGestureDetectorListener());
     }
 
     /*@Override
@@ -139,5 +144,10 @@ public class viewCustomObject extends View {
     }
 
 
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        boolean result = gesture.onTouchEvent(event);
+        return result;
+    }
 }
 

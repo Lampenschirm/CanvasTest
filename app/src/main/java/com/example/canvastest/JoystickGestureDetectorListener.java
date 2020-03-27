@@ -8,7 +8,7 @@ public class JoystickGestureDetectorListener extends GestureDetector.SimpleOnGes
 
     @Override
     public boolean onDown(MotionEvent e) {
-        return super.onDown(e);
+        return true;
     }
 
     @Override
