@@ -12,7 +12,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-public class viewCustomObject extends View implements View.OnTouchListener {
+public class ViewCustomObject extends View implements View.OnTouchListener {
 
     Paint outerCircleColor;
     Paint innerCircleColor;
@@ -95,24 +95,24 @@ public class viewCustomObject extends View implements View.OnTouchListener {
     }
 
 
-    public viewCustomObject(Context context, @Nullable AttributeSet attrs) {
+    public ViewCustomObject(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
 
 
-        TypedArray array = context.getTheme().obtainStyledAttributes(attrs,R.styleable.viewCustomObject,0,0);
+        TypedArray array = context.getTheme().obtainStyledAttributes(attrs,R.styleable.ViewCustomObject,0,0);
         try{
-            outerCircleRadius= array.getInteger(R.styleable.viewCustomObject_outerCircleRadius,200);
-            innerCircleRadius= array.getInteger(R.styleable.viewCustomObject_innerCircleRadius,100);
-            innerCirclePositionX = array.getInteger(R.styleable.viewCustomObject_innerCirclePositionX, 200);
-            innerCirclePositionY = array.getInteger(R.styleable.viewCustomObject_innerCirclePositionY, 200);
-            outerCirclePositionX = array.getInteger(R.styleable.viewCustomObject_outerCirclePositionX, 200);
-            outerCirclePositionY = array.getInteger(R.styleable.viewCustomObject_outerCirclePositionY, 200);
+            outerCircleRadius= array.getInteger(R.styleable.ViewCustomObject_outerCircleRadius,200);
+            innerCircleRadius= array.getInteger(R.styleable.ViewCustomObject_innerCircleRadius,100);
+            innerCirclePositionX = array.getInteger(R.styleable.ViewCustomObject_innerCirclePositionX, 200);
+            innerCirclePositionY = array.getInteger(R.styleable.ViewCustomObject_innerCirclePositionY, 200);
+            outerCirclePositionX = array.getInteger(R.styleable.ViewCustomObject_outerCirclePositionX, 200);
+            outerCirclePositionY = array.getInteger(R.styleable.ViewCustomObject_outerCirclePositionY, 200);
         }finally {
             array.recycle();
         }
 
-        gesture = new GestureDetector(context, new JoystickGestureDetectorListener());
+        gesture = new GestureDetector(context, new JoystickGestureDetectorListener(this));
     }
 
     /*@Override

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="viewCustomObject">
+    <declare-styleable name="ViewCustomObject">
         <attr name="outerCircleRadius" format="integer"></attr>
         <attr name="innerCircleRadius" format="integer"></attr>
         <attr name="outerCirclePositionX" format="integer"></attr>

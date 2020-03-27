@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.GestureDetector;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewCustomObject circle =  findViewById(R.id.Circle);
+        ViewCustomObject circle =  findViewById(R.id.Circle);
 circle.setOnTouchListener( circle);
     }
 }
