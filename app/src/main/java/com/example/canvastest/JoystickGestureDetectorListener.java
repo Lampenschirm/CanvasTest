@@ -19,14 +19,18 @@ public class JoystickGestureDetectorListener extends GestureDetector.SimpleOnGes
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        Log.i("Distanz","Distanz X: "+distanceX);
-        joyStick.setInnerCirclePositionX(joyStick.getInnerCirclePositionX() - (int)distanceX);
+
         Log.i("Distanz","Distanz Y: "+distanceY);
-        joyStick.setInnerCirclePositionY(joyStick.getInnerCirclePositionY()- (int)distanceY);
+        if(e1.getY() < (joyStick.getOuterCirclePositionY()+joyStick.getOuterCircleRadiusRadius()) && e1.getY() > 0)
+        {
+            joyStick.setInnerCirclePositionY(joyStick.getInnerCirclePositionY() - (int) distanceY);
+        }
+       /* Log.i("Distanz","Distanz X: "+distanceX);
+        joyStick.setInnerCirclePositionX(joyStick.getInnerCirclePositionX() - (int)distanceX);
         Log.i("MotionEvent", "X-Koordinate Event1: "+e1.getX());
         Log.i("MotionEvent", "Y-Koordinate Event1: "+e1.getY());
         Log.i("MotionEvent", "X-Koordinate Event2: "+e1.getX());
-        Log.i("MotionEvent", "Y-Koordinate Event2: "+e1.getY());
+        Log.i("MotionEvent", "Y-Koordinate Event2: "+e1.getY());*/
         return true;
         //return super.onScroll(e1, e2, distanceX, distanceY);
     }

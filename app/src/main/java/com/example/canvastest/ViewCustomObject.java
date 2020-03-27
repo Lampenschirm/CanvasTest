@@ -65,7 +65,12 @@ public class ViewCustomObject extends View implements View.OnTouchListener {
     }
 
     public void setInnerCirclePositionY(int innerCirclePositionY) {
-        this.innerCirclePositionY = innerCirclePositionY;
+        int upperBoundary = 600-innerCircleRadius;
+        int downBoundary = innerCircleRadius;
+        if(innerCirclePositionY>=upperBoundary){
+            this.innerCirclePositionY =upperBoundary;
+        }
+        else this.innerCirclePositionY = Math.max(innerCirclePositionY, downBoundary);
         invalidate();
         requestLayout();
     }
@@ -146,8 +151,7 @@ public class ViewCustomObject extends View implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        boolean result = gesture.onTouchEvent(event);
-        return result;
+        return gesture.onTouchEvent(event);
     }
 }
 
